@@ -1,0 +1,10 @@
+node_modules
+dist
+dist-server
+dist-ssr
+*.local
+.env
+.env.*
+!.env.example
+.vscode
+.DS_Store
