@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #FBF9F5;
+  --color-card: #FFFFFF;
+  --color-card-hover: #F7F3EE;
+  --color-text: #221518;
+  --color-muted: #6F5C62;
+  --color-subtle: #EAE1D9;
+  --color-border: #E8DFD7;
+  --color-primary: #721126;
+  --color-primary-hover: #590D1E;
+  --color-primary-light: #F5E6E8;
+  --color-accent: #B23A48;
+  --color-accent-light: #FCEEF0;
+  --color-badge: #8B1E3F;
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', 'Cairo', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  transition: background-color 220ms ease, color 220ms ease;
+}
+
+button:not(:disabled) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:not(:disabled):active {
+  scale: 0.985;
+  transition-duration: 90ms;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+@supports (view-transition-name: root) {
+  #root {
+    view-transition-name: app-root;
+  }
+
+  ::view-transition-old(app-root) {
+    animation: viewExit 120ms ease-in both;
+  }
+
+  ::view-transition-new(app-root) {
+    animation: viewEnter 180ms ease-out both;
+  }
+}
+
+@keyframes viewExit {
+  to { opacity: 0; transform: translate3d(0, 3px, 0); }
+}
+
+@keyframes viewEnter {
+  from { opacity: 0; transform: translate3d(0, 5px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 6px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    view-transition-name: none !important;
+  }
+}
