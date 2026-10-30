@@ -104,7 +104,7 @@ export const ChatRoom: React.FC = () => {
             <div>
               <label className="block text-sm font-medium mb-1 text-slate-300">البريد الإلكتروني</label>
               <input 
-                type="email5" 
+                type="email" 
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
